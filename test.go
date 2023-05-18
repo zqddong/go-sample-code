@@ -30,16 +30,33 @@ func main() {
 	//fmt.Println(restoreMatrix([]int{3, 8}, []int{4, 7}))
 	//strings.Join()
 
-	var slice []int
-	slice = append(slice, 1, 2, 3)
+	//var slice []int
+	//slice = append(slice, 1, 2, 3)
+	//
+	//newSlice := AddElement(slice, 4)
+	//fmt.Println(&slice[0] == &newSlice[0])
+	//
+	//fmt.Println("lenth of slice: ", len(slice))
+	//fmt.Println("lenth of slice: ", len(newSlice))
+	//fmt.Println("capacity of slice: ", cap(slice))
+	//fmt.Println("capacity of slice: ", cap(newSlice))
+	ch := make(chan int, 5)
+	for i := 0; i < 5; i++ {
+		ch <- i
+		fmt.Println(len(ch))
 
-	newSlice := AddElement(slice, 4)
-	fmt.Println(&slice[0] == &newSlice[0])
+	}
+	time.Sleep(time.Second * 3)
 
-	fmt.Println("lenth of slice: ", len(slice))
-	fmt.Println("lenth of slice: ", len(newSlice))
-	fmt.Println("capacity of slice: ", cap(slice))
-	fmt.Println("capacity of slice: ", cap(newSlice))
+	for i := 0; i < 3; i++ {
+		getI, ok := <-ch
+		if ok {
+			fmt.Println("get i: ", getI, len(ch))
+		}
+	}
+
+	fmt.Println(len(ch))
+
 }
 
 func AddElement(slice []int, e int) []int {
