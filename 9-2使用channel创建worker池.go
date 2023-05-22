@@ -61,6 +61,8 @@ func (w *WorkerBuild) fetchTask() {
 }
 
 func (w *WorkerBuild) Start() error {
+	// sync.errgroup 是在 sync.WaitGroup 的基础上
+	// 增加错误传递 错误取消，以及等待超时
 	g := errgroup.Group{}
 
 Loop:

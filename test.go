@@ -40,23 +40,24 @@ func main() {
 	//fmt.Println("lenth of slice: ", len(newSlice))
 	//fmt.Println("capacity of slice: ", cap(slice))
 	//fmt.Println("capacity of slice: ", cap(newSlice))
-	ch := make(chan int, 5)
-	for i := 0; i < 5; i++ {
-		ch <- i
-		fmt.Println(len(ch))
 
-	}
-	time.Sleep(time.Second * 3)
-
-	for i := 0; i < 3; i++ {
-		getI, ok := <-ch
-		if ok {
-			fmt.Println("get i: ", getI, len(ch))
-		}
-	}
-
-	fmt.Println(len(ch))
-
+	//
+	//ch := make(chan int, 5)
+	//for i := 0; i < 5; i++ {
+	//	ch <- i
+	//	fmt.Println(len(ch))
+	//
+	//}
+	//time.Sleep(time.Second * 3)
+	//
+	//for i := 0; i < 3; i++ {
+	//	getI, ok := <-ch
+	//	if ok {
+	//		fmt.Println("get i: ", getI, len(ch))
+	//	}
+	//}
+	//
+	//fmt.Println(len(ch))
 }
 
 func AddElement(slice []int, e int) []int {
